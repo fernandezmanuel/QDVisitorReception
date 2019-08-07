@@ -1,0 +1,16 @@
+<?php
+$servernaam = "localhost";
+$gebruikersnaam = "username";
+$wachtwoord = "this is a password";
+$databanknaam = "database";
+
+
+$databank = new mysqli($servernaam, $gebruikersnaam, $wachtwoord, $databanknaam);
+
+if ($databank->connect_error)
+{
+    die("🙀 " . $databank->connect_error);
+	//mysqli_report(MYSQLI_REPORT_ERROR);
+}
+
+?>
