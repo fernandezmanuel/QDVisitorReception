@@ -12,9 +12,9 @@ body
 </head>
 <body>
 <?php
-include('../../configuratie.php');
+include('../../configuration.php');
 
-if ($resultaat = $databank->query("SELECT * FROM bezoeker ORDER BY tijd DESC"))
+if ($resultaat = $dbconnection->query("SELECT * FROM visitor ORDER BY visitortime DESC"))
 {
 	if ($resultaat->num_rows > 0)
 	{
@@ -24,11 +24,11 @@ if ($resultaat = $databank->query("SELECT * FROM bezoeker ORDER BY tijd DESC"))
 		while ($rij = $resultaat->fetch_object())
 		{
 			echo "<tr>";
-			echo "<td>" . $rij->naam . "</td>";
-			echo "<td>" . $rij->meel . "</td>";
-			echo "<td>" . $rij->bedrijf . "</td>";
-			echo "<td>" . $rij->tijd . "</td>";
-			echo "<td><abbr title=\"Delete entry\" style=\"text-decoration:none\"><a href=\"verwijder.php?naam=" . $rij->naam . "\" style=\"text-decoration:none\">❌</a></td></abbr>";
+			echo "<td>" . $rij->visitorname . "</td>";
+			echo "<td>" . $rij->visitormail . "</td>";
+			echo "<td>" . $rij->visitororg . "</td>";
+			echo "<td>" . $rij->visitortime . "</td>";
+			echo "<td><abbr title=\"Delete entry\" style=\"text-decoration:none\"><a href=\"delete.php?visitorname=" . $rij->visitorname . "\" style=\"text-decoration:none\">❌</a></td></abbr>";
 			echo "</tr>";
 		}
 		
@@ -43,10 +43,10 @@ if ($resultaat = $databank->query("SELECT * FROM bezoeker ORDER BY tijd DESC"))
 
 else
 {
-	echo "<span style=\"font-size:128px\">🙀</span><br /><br />" . $databank->error;
+	echo "<span style=\"font-size:128px\">🙀</span><br /><br />" . $dbconnection->error;
 }
 
-$databank->close();
+$dbconnection->close();
 ?>
 
 <br /><br />

@@ -1,0 +1,15 @@
+<?php
+$servername = "localhost";
+$username = "henk";
+$password = "this is a Password 678%";
+$database = "qdvrdb";
+
+$dbconnection = new mysqli($servername, $username, $password, $database);
+
+if ($dbconnection->connect_error)
+{
+    die("🙀 Connection to the database failed or something, get the sysadmin. Show them this:<br /><br />" . $dbconnection->connect_error);
+	//mysqli_report(MYSQLI_REPORT_ERROR);
+}
+
+?>

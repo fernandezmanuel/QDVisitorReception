@@ -38,17 +38,17 @@ Or use PHPMyAdmin, who am I to judge?
 
 Here's an example:
 ```
-CREATE DATABASE `aanwezig`;
+CREATE DATABASE `qdvrdb`;
 
-USE `aanwezig`;
+USE `qdvrdb`;
 
-CREATE TABLE `bezoeker` (`naam` varchar(123) NOT NULL, `meel` varchar(123) NOT NULL, `bedrijf` varchar(123) NOT NULL, `tijd` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `visitor` (`visitorname` varchar(123) NOT NULL, `visitormail` varchar(123) NOT NULL, `visitororg` varchar(123) NOT NULL, `visitortime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE `bezoeker` ADD UNIQUE KEY `naam` (`naam`);
+ALTER TABLE `visitor` ADD UNIQUE KEY `visitorname` (`visitorname`);
 
-GRANT ALL PRIVILEGES ON aanwezig.* TO aanwezig@localhost IDENTIFIED BY "please change this";
+GRANT ALL PRIVILEGES ON qdvrdb.* TO qdvr@localhost IDENTIFIED BY "please change this";
 
-DESCRIBE `bezoeker`;
+DESCRIBE `visitor`;
 ```
 
 If you copy/pasted the above example, at least change the password.
@@ -57,9 +57,9 @@ If you copy/pasted the above example, at least change the password.
 Git clone in the webserver folder. That folder is ```/var/www/html``` on Debian, but it might be somewhere else on your server, so check where it is first.
 Configure your webserver so it points to the ```public``` directory when someone accesses it.
 
-Rename the ```configuratie.php.default``` file to ```configuratie.php```.
+Rename the ```configuration.php.default``` file to ```configuration.php```.
 
-Edit the ```configuratie.php``` file to reflect the database, user, and password.
+Edit the ```configuration.php``` file to reflect the database, user, and password.
 
 For extra security, use password protection with the ```.htaccess``` file on the ```reception``` directory, which is described here: http://www.htaccesstools.com/articles/password-protection/
 
