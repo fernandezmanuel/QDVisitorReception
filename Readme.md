@@ -7,7 +7,17 @@ This thing is spaghetticode written in PHP 5 with the mysqli extension. It's bas
 There's no hipster framework that gives you dependency hell and fails to install anyway.
 Just git clone in your webserver folder and create a database.
 
-### Prerequisites
+### Prerequisites for client
+The client will need a web browser.
+
+The webinterface should work on the following browsers:
+* Chromium 71 or later (or forks like Brave, Chrome, Edge, Opera, Vivaldi, etc.)
+* Firefox 60 or later
+* Safari 12 or later
+
+Internet Explorer should work too, except for some emoji's not displaying correctly.
+
+### Prerequisites for server
 You're going to need:
 * Some sort of webserver like Apache 2, nginx, or IIS
 * PHP 5 (but PHP 7 may work too)
@@ -28,19 +38,17 @@ Or use PHPMyAdmin, who am I to judge?
 
 Here's an example:
 ```
-CREATE DATABASE 'aanwezig';
+CREATE DATABASE `aanwezig`;
 
-CREATE TABLE 'bezoeker' (
-  'naam' varchar(123) NOT NULL,
-  'meel' varchar(123) NOT NULL,
-  'bedrijf' varchar(123) NOT NULL,
-  'tijd' datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+USE `aanwezig`;
 
-ALTER TABLE 'bezoeker'
-  ADD UNIQUE KEY 'naam' ('naam');
+CREATE TABLE `bezoeker` (`naam` varchar(123) NOT NULL, `meel` varchar(123) NOT NULL, `bedrijf` varchar(123) NOT NULL, `tijd` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-GRANT ALL PRIVILEGES ON aanwezig.* TO aanwezig@localhost IDENTIFIED BY 'please change this';
+ALTER TABLE `bezoeker` ADD UNIQUE KEY `naam` (`naam`);
+
+GRANT ALL PRIVILEGES ON aanwezig.* TO aanwezig@localhost IDENTIFIED BY "please change this";
+
+DESCRIBE `bezoeker`;
 ```
 
 If you copy/pasted the above example, at least change the password.

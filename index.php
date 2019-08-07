@@ -38,7 +38,7 @@ body
 -->
 <a href="./bezoeker.php" style="text-decoration:none">
 <button class="blokkie">
-<span class="metjehoofd">🧝‍♂️‍</span><br /><br /><span class="tekst">Visitor</span>
+<span class="metjehoofd">🧝‍‍</span><br /><br /><span class="tekst">Visitor</span>
 </button>
 </a>
 
