@@ -1,5 +1,5 @@
 <?php
-include('../configuratie.php');
+include('../../configuratie.php');
 
 if (isset($_GET['naam']))
 {

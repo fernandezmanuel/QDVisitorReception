@@ -12,7 +12,7 @@ body
 </head>
 <body>
 <?php
-include('../configuratie.php');
+include('../../configuratie.php');
 
 if ($resultaat = $databank->query("SELECT * FROM bezoeker ORDER BY tijd DESC"))
 {
@@ -50,7 +50,7 @@ $databank->close();
 ?>
 
 <br /><br />
-<a href="../index.php" style="text-decoration:none;"><button style="font-size:24px;cursor:pointer;">⬅️ Back</button></a>
+<a href="../index.html" style="text-decoration:none;"><button style="font-size:24px;cursor:pointer;">⬅️ Back</button></a>
 
 </body>
 </html>

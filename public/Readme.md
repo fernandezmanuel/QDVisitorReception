@@ -55,6 +55,7 @@ If you copy/pasted the above example, at least change the password.
 
 ### Deployment
 Git clone in the webserver folder. That folder is ```/var/www/html``` on Debian, but it might be somewhere else on your server, so check where it is first.
+Configure your webserver so it points to the ```public``` directory when someone accesses it.
 
 Rename the ```configuratie.php.default``` file to ```configuratie.php```.
 
