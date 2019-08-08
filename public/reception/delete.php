@@ -3,24 +3,23 @@ include('../../configuration.php');
 
 if (isset($_GET['visitorname']))
 {
-	$visitorname = $_GET['visitorname'];
+	$visitorname = mysqli_real_escape_string($dbconnection, $_GET['visitorname']);
 
-	if ($zoekopdracht = $dbconnection->prepare("DELETE FROM visitor WHERE visitorname = '$visitorname'"))
+	if ($querysearch = $dbconnection->prepare("DELETE FROM visitor WHERE visitorname = '$visitorname'"))
 	{
-		$zoekopdracht->execute();
-		$zoekopdracht->close();
+		$querysearch->execute();
+		$querysearch->close();
 	}
 	else
 	{
 		echo "🙀 Connection to the database failed or something, get the sysadmin. Show them this:<br /><br />" . $dbconnection->error;
+		$dbconnection->close();
 	}
-	
-	$dbconnection->close();
 
 	header("Location: index.php");
 }
 else
 {
-	echo "🙀 Connection to the database failed or something, get the sysadmin. Show them this:<br /><br />" . $dbconnection->error;
+	header("Location: index.php");
 }
 ?>
