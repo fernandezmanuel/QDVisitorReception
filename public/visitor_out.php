@@ -22,11 +22,6 @@ input#submitname
 </style>
 </head>
 <body>
-<form id="searchname" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-	<input id="visitorname" name="visitorname" type="text" placeholder="Search for your name" />
-	<input id="submitname" type="submit" value="🔎" />
-</form>
-<br /><br />
 <?php
 include('../configuration.php');
 
@@ -39,7 +34,7 @@ if((isset($_POST['visitorname'])))
 		if ($whovisitors->num_rows > 0)
 		{
 			echo "<table border=\"1\" cellpadding=\"10\">";
-			echo "<tr><th>Name</th><th>E-mail</th><th>Organisation</th><th>Time</th><th></th></tr>";
+			echo "<tr><th>Name</th><th>E-mail</th><th>Organisation</th><th>Arrival</th><th></th></tr>";
 
 			while ($row = $whovisitors->fetch_object())
 			{
@@ -52,12 +47,12 @@ if((isset($_POST['visitorname'])))
 				echo "</tr>";
 			}
 
-			echo "</table>";
+			echo "</table><div style=\"font-family:sans-serif;position:fixed;right:5px;left:auto;top:auto;bottom:5px;border:1px solid #000000;width:300px;\"><div style=\"background:#0078D7;color:#fff;text-align:center;margin:2px 2px 2px 2px;\">ℹ</div><div style=\"margin:2px 2px 2px 2px;\">Press \"❌\" to delete your entry.</div></div>";
 		}
 
 		else
 		{
-			echo "<span style=\"font-size:128px\">🗇</span><br /><br />The visitor list is empty...";
+			echo "<span style=\"font-size:128px\">🗇</span><br /><br />Hmmm... couldn't find \"$visitorname\"...";
 		}
 	}
 
@@ -70,15 +65,13 @@ if((isset($_POST['visitorname'])))
 
 else
 {
-	echo "";
+	echo "<form id=\"searchname\" method=\"post\" action=\"" .$_SERVER['PHP_SELF']. "\">
+	<input id=\"visitorname\" name=\"visitorname\" type=\"text\" placeholder=\"Search for your name\" />
+	<input id=\"submitname\" type=\"submit\" value=\"🔎\" /></form><div style=\"font-family:sans-serif;position:fixed;right:5px;left:auto;top:auto;bottom:5px;border:1px solid #000000;width:500px;\"><div style=\"background:#0078D7;color:#fff;text-align:center;margin:2px 2px 2px 2px;\">ℹ</div><div style=\"margin:2px 2px 2px 2px;\">Type your name in the search bar, and hit \"Enter\" or the \"🔎\" button.</div></div>";
 }
 
 $dbconnection->close();
 ?>
-<div style="font-family:sans-serif;position:fixed;right:5px;left:auto;top:auto;bottom:5px;border:1px solid #000000;width:300px;">
-	<div style="background:#0078D7;color:#fff;text-align:center;margin:2px 2px 2px 2px;">ℹ</div>
-	<div style="margin:2px 2px 2px 2px;">Press "❌" to delete your entry.</div>
-</div>
 <br /><br />
 <a href="./index.html" style="text-decoration:none;"><button style="font-size:24px;cursor:pointer;">⬅️ Back</button></a>
 </body>
