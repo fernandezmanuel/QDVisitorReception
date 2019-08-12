@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "henk";
-$password = "this is a Password 678%";
+$username = "root";
+$password = "root";
 $database = "qdvrdb";
 
 $dbconnection = new mysqli($servername, $username, $password, $database);
