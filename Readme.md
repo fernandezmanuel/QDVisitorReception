@@ -70,5 +70,7 @@ For extra security, use password protection with the ```.htaccess``` file on the
 ## Contributing
 Just make some pull request and I'll probably hit the "Merge" button.
 
+Or create an issue and roast this project and/or me as harshly as you can.
+
 ## License
 This project is licensed under The Unlicense - see the ```LICENSE``` file for details.
