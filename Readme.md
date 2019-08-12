@@ -1,7 +1,7 @@
 # QDVisitorReception
 A quick and dirty visitor registration system to use on some sort of tablet at the reception desk.
 
-This thing is spaghetticode written in PHP 5 with the mysqli extension. It's basically a guestbook from the first chapter on a PHP learning book, but with extra steps. Gets the job done though.
+This thing is written in HTML, CSS, and PHP with the mysqli extension.
 
 ## Getting started
 There's no hipster framework that gives you dependency hell and fails to install anyway.
@@ -20,13 +20,13 @@ Internet Explorer should work too, except for some emoji's not displaying correc
 ### Prerequisites for server
 You're going to need:
 * Some sort of webserver like Apache 2, nginx, or IIS
-* PHP 5 (but PHP 7 may work too)
+* PHP 7 or PHP 5
 * MariaDB or MySQL
 * Git client
 
 For example, on Debian, you install those like this:
 ```
-apt install -y apache2 php mariadb-server mariadb-client git
+apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-client mysql_secure_installation git
 ```
 
 The setup should work on CentOS, Arch, or even Windows too, but I couldn't be bothered to test that hypothesis.
@@ -46,9 +46,13 @@ CREATE TABLE `visitor` (`visitorname` varchar(123) NOT NULL, `visitormail` varch
 
 ALTER TABLE `visitor` ADD UNIQUE KEY `visitorname` (`visitorname`);
 
+CREATE TABLE `employee` (`id` int(11) NOT NULL AUTO_INCREMENT, `name` varchar(128) NOT NULL, `present` bit(1) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 GRANT ALL PRIVILEGES ON qdvrdb.* TO qdvr@localhost IDENTIFIED BY "please change this";
 
 DESCRIBE `visitor`;
+
+DESCRIBE `employee`;
 ```
 
 If you copy/pasted the above example, at least change the password.
